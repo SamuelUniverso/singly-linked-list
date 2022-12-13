@@ -63,4 +63,45 @@ public class SinglyLinkedListTest {
         /// Imprimir
         list.printList();
 	}
+	
+	@Test
+	public void testRandom()
+	{
+		 double value = Math.random() * 100;
+		 int result = (int) value;
+		 System.out.print(result);
+	}
+	
+	@Test
+	public void testSpeed()
+	{
+		/// Bubble Sort
+		long iniBubble = System.currentTimeMillis();
+		SinglyLinkedList list1 = new SinglyLinkedList();
+		for(int i = 0; i < 10000; i++) {
+			 double value = Math.random() * 100;
+			 int result = (int) value;
+			 list1.insert(list1, result);
+		}
+		list1.bubbleSort();
+		long endBubble = System.currentTimeMillis();
+		long timeBubble = (endBubble - iniBubble);
+		
+		/// Merge Sort
+		long iniMerge  = System.currentTimeMillis();
+		SinglyLinkedList list2 = new SinglyLinkedList();
+		for(int i = 0; i < 10000; i++) {
+			 double value = Math.random() * 100;
+			 int result = (int) value;
+			 list2.insert(list2, result);
+		}
+		list2.mergeSort(list2.head);
+		long endMerge  = System.currentTimeMillis();
+		long timeMerge = (endMerge - iniMerge);
+		
+		
+		System.out.println(":::::::::::::: Tempo de Execução ::::::::::::::");
+		System.out.println("Bubble Sort: " + timeBubble + " ms");
+		System.out.println("Merge Sort: " + timeMerge + " ms");
+	}
 }
